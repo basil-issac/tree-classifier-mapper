@@ -14,6 +14,17 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+### Starting from scratch?
+
+#### Mac Instructions For Environment Setup
+Run this set of commands if this is your first time using javaScript frameworks.
+
+`brew install npm`
+`npm install -g @angular/cli`
+`npm install`
+
+Now you should be able to run `ng build` and `ng serve`
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
