@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tree-classifier-mapper';
+  onFileSelected(event){
+    console.log(event);
+
+  }
 }

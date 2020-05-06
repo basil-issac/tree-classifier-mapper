@@ -339,6 +339,11 @@
   </div>
 
   <!-- Resources -->
+ <!-- <button type="button" (click)="fileInput.click()">
+    <span>Upload Image</span>-->
+    <input type="file" (change)="onFileSelected($event)">
+    <!-- <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" /> -->
+  <!--</button>-->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
 
