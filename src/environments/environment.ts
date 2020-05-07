@@ -3,10 +3,23 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+<<<<<<< HEAD
   production: false,
 
   mapbox: {
     accessToken: 'pk.eyJ1IjoiZ3JlYXRibHVlaGVycm9uIiwiYSI6ImNrOWMxNmgxbjAwY3gzbG40emlzbDh6eWkifQ.ehwxbzBHBp42izV7XNAzLQ'
+=======
+  production: true,
+  firebase: {
+    apiKey: "<REPLACE>",
+    authDomain: "tree-classifier-mapper.firebaseapp.com",
+    databaseURL: "https://tree-classifier-mapper.firebaseio.com",
+    projectId: "tree-classifier-mapper",
+    storageBucket: "tree-classifier-mapper.appspot.com",
+    messagingSenderId: "<REPLACE>",
+    appId: "<REPLACE>",
+    measurementId: "<REPLACE>"
+>>>>>>> 2c6281bd793c59748a675dfb7b42cbadf8d0c144
   }
 };
 
