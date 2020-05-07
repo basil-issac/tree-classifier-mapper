@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tree-classifier-mapper';
-  onFileSelected(event){
-    console.log(event);
+  menuOpen: any = true;
 
+  toggleMenu = () => {
+    this.menuOpen = !this.menuOpen;
   }
+
 }
