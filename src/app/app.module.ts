@@ -31,19 +31,19 @@ import {MatInputModule} from "@angular/material/input";
     PlantMetadataListComponent
   ],
   imports: [
-    BrowserModule,
-    MatButtonModule,
-    MatSidenavModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
+    BrowserAnimationsModule,
+    BrowserModule,
     FormsModule,
-    MatInputModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
   providers: [PlantMetadataService],
   bootstrap: [AppComponent]
