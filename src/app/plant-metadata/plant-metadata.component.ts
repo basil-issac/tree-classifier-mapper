@@ -15,17 +15,18 @@ export class PlantMetadataComponent implements OnInit {
 
   plantType = ["Oak", "Maple", "Ash", "Fur", "Cherry", "Pine"];
 
-  plantMetadata = [];
+  onSubmit(): void {
+    let data = this.plantMetadataService.form.value;
 
-  addPlantType = plant => this.plantMetadata.push(plant);
+    this.plantMetadataService.createTreeMetadataEntry(data)
+      .then(res => {
+        /* do something here....
+        maybe clear the form or give a success message */
+      });
+  }
 
-  removePlantType = plant => {
-    let index = this.plantMetadata.indexOf(plant);
-    if (index > -1) {
-      this.plantMetadata.splice(index, 1);
-    }
-  };
-
-  onSubmit(): void {}
+  changePlantType(event) {
+    this.plantType = event.target.value
+  }
 }
 

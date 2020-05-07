@@ -15,9 +15,12 @@ import { PlantMetadataComponent } from './plant-metadata/plant-metadata.componen
 import { PlantMetadataListComponent } from './plant-metadata-list/plant-metadata-list.component';
 import { PlantMetadataService } from "./shared/plant-metadata.service";
 
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { environment } from '../environments/environment';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -36,7 +39,11 @@ import { environment } from '../environments/environment';
     MatToolbarModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [PlantMetadataService],
   bootstrap: [AppComponent]

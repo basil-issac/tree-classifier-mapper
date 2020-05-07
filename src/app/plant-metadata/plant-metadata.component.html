@@ -1,36 +1,51 @@
-<form [formGroup]="this.plantMetadataService.form" (ngSubmit)="onSubmit()">
-  <input placeholder="Uploader Name"
-         formControlName="uploaderName"
-         type="text"
-         class="input-field col s12">
-  <input placeholder="Upload Id"
-         formControlName="uploadId"
-         type="text"
-         class="input-field col s12">
-  <button class="waves-effect waves-light btn col s4"
-          *ngFor="let plant of plantType"
-          (click)="addPlantType(plant)"
-  >
-    {{plant}}
-  </button>
-  <ul class="collection">
-    <li *ngFor="let plant of plantMetadata">
-      <span class="col s11"> {{ plant }} </span>
-      <a class="col s1" (click)="removePlantType(plant)">x</a>
-    </li>
-  </ul>
-  <input placeholder="Latitude"
-         formControlName="latitude"
-         type="text"
-         class="input-field col s12">
-  <input placeholder="Longitude"
-         formControlName="longitude"
-         type="text"
-         class="input-field col s12">
+<form
+  [formGroup]="this.plantMetadataService.form"
+  (ngSubmit)="onSubmit()"
+  style="
+    display: flex;
+    flex-direction: column;"
+>
+    <input
+      matInput
+      placeholder="Uploader Name"
+      formControlName="uploaderName"
+      type="text"
+    >
+
+    <input
+      matInput
+      placeholder="Upload Id"
+      formControlName="uploadId"
+      type="text"
+     >
+
+    <select matNativeControl class="custom-select" (change)="changePlantType($event)" formControlName="plantType">
+      <option value="">Plant Type</option>
+      <option *ngFor="let plantName of plantType" [ngValue]="plantName">{{plantName}}</option>
+    </select>
+
+    <input
+      matInput
+      placeholder="Latitude"
+      formControlName="latitude"
+      type="text"
+     >
+
+    <input
+      matInput
+      placeholder="Longitude"
+      formControlName="longitude"
+      type="text"
+    >
+
+  <br>
 
   <button
-    class="waves-effect waves-light btn col s12"
-    (click)="onSubmit()">
+    mat-stroked-button
+    style="margin: 10px;"
+    (click)="onSubmit()"
+  >
     Submit
   </button>
 </form>
+
