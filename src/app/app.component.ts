@@ -13,6 +13,11 @@ export class AppComponent {
     this.menuOpen = !this.menuOpen;
   }
 
+  onFileSelected(event){
+    console.log(event);
+
+  }
+
 
 
 }
