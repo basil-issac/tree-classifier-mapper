@@ -1,0 +1,36 @@
+<form [formGroup]="this.plantMetadataService.form" (ngSubmit)="onSubmit()">
+  <input placeholder="Uploader Name"
+         formControlName="uploaderName"
+         type="text"
+         class="input-field col s12">
+  <input placeholder="Upload Id"
+         formControlName="uploadId"
+         type="text"
+         class="input-field col s12">
+  <button class="waves-effect waves-light btn col s4"
+          *ngFor="let plant of plantType"
+          (click)="addPlantType(plant)"
+  >
+    {{plant}}
+  </button>
+  <ul class="collection">
+    <li *ngFor="let plant of plantMetadata">
+      <span class="col s11"> {{ plant }} </span>
+      <a class="col s1" (click)="removePlantType(plant)">x</a>
+    </li>
+  </ul>
+  <input placeholder="Latitude"
+         formControlName="latitude"
+         type="text"
+         class="input-field col s12">
+  <input placeholder="Longitude"
+         formControlName="longitude"
+         type="text"
+         class="input-field col s12">
+
+  <button
+    class="waves-effect waves-light btn col s12"
+    (click)="onSubmit()">
+    Submit
+  </button>
+</form>

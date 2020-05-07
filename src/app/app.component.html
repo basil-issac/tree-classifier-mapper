@@ -27,6 +27,12 @@
       [opened]="menuOpen"
       style="background-color: #3CB371; width: 270px; height: 100%;"
     >
+      <div class="container">
+        <div class="row">
+          <app-plant-metadata class="col s6"></app-plant-metadata>
+          <app-plant-metadata-list class="col s6"></app-plant-metadata-list>
+        </div>
+      </div>
     </mat-drawer>
     <mat-drawer-content>
       <app-map></app-map>
