@@ -1,0 +1,11 @@
+<p> Here is the data from the database!</p>
+<tbody>
+  <tr *ngFor="let metadata of plantMetadataList">
+    <td>{{ metadata.payload.doc.data().uploaderName }}</td>
+    <td>{{ metadata.payload.doc.data().uploadId }}</td>
+    <td>{{ metadata.payload.doc.data().plantType }}</td>
+    <td>{{ metadata.payload.doc.data().latitude }}</td>
+    <td>{{ metadata.payload.doc.data().longitude }}</td>
+    <td>{{ metadata.payload.doc.data().seeded }}</td>
+  </tr>
+</tbody>

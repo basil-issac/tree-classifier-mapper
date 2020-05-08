@@ -9,5 +9,8 @@ export const environment = {
     messagingSenderId: "<REPLACE>",
     appId: "<REPLACE>",
     measurementId: "<REPLACE>"
+  },
+  mapbox: {
+    accessToken: "<REPLACE>"
   }
 };
