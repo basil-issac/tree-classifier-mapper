@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   firebase: {
-<<<<<<< HEAD
     apiKey: 'AIzaSyBqnG0ew8C0kAwbavTKY8y5iO7yfO3H398',
     authDomain: 'tree-classifier-mapper.firebaseapp.com',
     databaseURL: 'https://tree-classifier-mapper.firebaseio.com',
@@ -17,19 +16,6 @@ export const environment = {
   },
   mapbox: {
     accessToken: 'pk.eyJ1IjoiZ3JlYXRibHVlaGVycm9uIiwiYSI6ImNrOWMxNmgxbjAwY3gzbG40emlzbDh6eWkifQ.ehwxbzBHBp42izV7XNAzLQ'
-=======
-    apiKey: "<REPLACE>",
-    authDomain: "tree-classifier-mapper.firebaseapp.com",
-    databaseURL: "https://tree-classifier-mapper.firebaseio.com",
-    projectId: "tree-classifier-mapper",
-    storageBucket: "tree-classifier-mapper.appspot.com",
-    messagingSenderId: "<REPLACE>",
-    appId: "<REPLACE>",
-    measurementId: "<REPLACE>"
-  },
-  mapbox: {
-    accessToken: "<REPLACE>"
->>>>>>> e0e6eafb19c0eff9bb72b430dd3d6450e8f4527c
   }
 };
 
