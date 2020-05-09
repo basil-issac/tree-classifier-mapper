@@ -9,8 +9,9 @@ export class AppComponent {
   title = 'tree-classifier-mapper';
   menuOpen: any = true;
 
+
+
   toggleMenu = () => {
     this.menuOpen = !this.menuOpen;
   }
-
 }
