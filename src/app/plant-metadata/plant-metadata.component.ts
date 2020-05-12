@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantMetadataService } from "../shared/plant-metadata.service";
 
+
 @Component({
   selector: 'app-plant-metadata',
   templateUrl: './plant-metadata.component.html',
@@ -33,4 +34,16 @@ export class PlantMetadataComponent implements OnInit {
     console.log(event);
   }
 }
+/*upload file section here*/
+export class UploadFileComponent{
+  selectedFile= File;
+ 
+  onFileSelect(event) {
+    this.selectedFile = event.target.files[0];
+  }
+setUpload(){
+ 
+  }
+}
+/******/
 

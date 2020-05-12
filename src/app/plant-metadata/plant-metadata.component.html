@@ -37,6 +37,20 @@
       formControlName="longitude"
       type="text"
     >
+ <!--for uploading file section-->
+    <input
+    matInput
+    placeholder="Choosefile"
+    formControlName="choosefile"
+    type="file" 
+    accept=".png, .jpg"
+    (change="onFileSelect($event)">
+
+    <button 
+    style="margin: 10px;"
+    (click)="setUpload()"
+    >Upload</button>
+  <!---->
 
   <br>
 

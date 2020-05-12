@@ -23,6 +23,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +44,8 @@ import {MatInputModule} from "@angular/material/input";
     MatSelectModule,
     MatSidenavModule,
     MatToolbarModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+   ],
   providers: [PlantMetadataService],
   bootstrap: [AppComponent]
 })
