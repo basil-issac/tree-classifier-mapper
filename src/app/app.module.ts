@@ -45,8 +45,7 @@ import {MatInputModule} from "@angular/material/input";
     MatSidenavModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ],
+   ],
   providers: [PlantMetadataService],
   bootstrap: [AppComponent]
 })
