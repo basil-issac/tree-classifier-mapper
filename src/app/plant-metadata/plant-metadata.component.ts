@@ -30,4 +30,16 @@ export class PlantMetadataComponent implements OnInit {
     this.plantType = event.target.value
   }
 }
+/*upload file section here*/
+export class UploadFileComponent{
+  selectedFile= File;
+ 
+  onFileSelect(event) {
+    this.selectedFile = event.target.files[0];
+  }
+setUpload(){
+ 
+  }
+}
+/******/
 
