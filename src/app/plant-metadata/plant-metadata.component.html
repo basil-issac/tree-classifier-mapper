@@ -5,57 +5,37 @@
     display: flex;
     flex-direction: column;"
 >
-    <input
-      matInput
-      placeholder="Uploader Name"
-      formControlName="uploaderName"
-      type="text"
-    >
-
-    <input
-      matInput
-      placeholder="Upload Id"
-      formControlName="uploadId"
-      type="text"
-     >
-
-    <select matNativeControl class="custom-select" (change)="changePlantType($event)" formControlName="plantType">
-      <option value="">Plant Type</option>
-      <option *ngFor="let plantName of plantType" [ngValue]="plantName">{{plantName}}</option>
-    </select>
-
-    <input
-      matInput
-      placeholder="Latitude"
-      formControlName="latitude"
-      type="text"
-     >
-
-    <input
-      matInput
-      placeholder="Longitude"
-      formControlName="longitude"
-      type="text"
-    >
- <!--for uploading file section-->
-    <input
+  <input
     matInput
-    placeholder="Choosefile"
-    formControlName="choosefile"
-    type="file" 
-    accept=".png, .jpg"
-    (change="onFileSelect($event)">
+    placeholder="Uploader Name"
+    formControlName="uploaderName"
+    type="text"
+  >
 
-    <button 
-    style="margin: 10px;"
-    (click)="setUpload()"
-    >Upload</button>
-  <!---->
+  <select matNativeControl class="custom-select" formControlName="plantType">
+    <option value="">Plant Type</option>
+    <option *ngFor="let plantName of plantTypeList" [ngValue]="plantName">{{plantName}}</option>
+  </select>
 
-  <br>
+  <input
+    matInput
+    placeholder="Latitude"
+    formControlName="latitude"
+    type="text"
+   >
 
-  <input type="file" (change)="onFileSelected($event)">
-  <button type="button">Upload Image</button>
+  <input
+    matInput
+    placeholder="Longitude"
+    formControlName="longitude"
+    type="text"
+  >
+
+ <!--for uploading file section-->
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept=".png, .jpg">
 
   <button
     mat-stroked-button
