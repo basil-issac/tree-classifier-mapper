@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantMetadataService } from "../shared/plant-metadata.service";
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-plant-metadata',
