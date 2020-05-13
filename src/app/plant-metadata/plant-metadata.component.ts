@@ -33,6 +33,11 @@ export class PlantMetadataComponent implements OnInit {
   onFileSelected(event){
     console.log(event);
   }
+
+  setUpload(){
+    console.log('setUpload');
+  }
+  
 }
 /*upload file section here*/
 export class UploadFileComponent{
@@ -40,10 +45,6 @@ export class UploadFileComponent{
  
   onFileSelect(event) {
     this.selectedFile = event.target.files[0];
-  }
-
-  setUpload(){
-    console.log('setUpload');
   }
 }
 /******/
