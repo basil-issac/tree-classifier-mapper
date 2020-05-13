@@ -30,6 +30,9 @@ jobs:
     
     - name: Install dependencies
       run: npm ci
+      
+    - name: Install ng  
+      run: npm install -g @angular/cli
     
     - name: Runs ng test script
       run: ng test --no-watch --code-coverage
