@@ -34,5 +34,8 @@ jobs:
     - name: Install ng  
       run: npm install @angular/cli
     
+    - name: Link ng
+      run: npm link @angular/cli
+    
     - name: Runs ng test script
       run: ng test --no-watch --code-coverage
