@@ -19,7 +19,4 @@ describe('PlantMetadataComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

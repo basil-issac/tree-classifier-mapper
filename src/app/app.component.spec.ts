@@ -22,10 +22,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('tree-classifier-mapper');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('tree-classifier-mapper app is running!');
-  });
 });

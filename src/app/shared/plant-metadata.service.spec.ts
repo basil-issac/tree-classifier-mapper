@@ -10,7 +10,4 @@ describe('PlantMetadataService', () => {
     service = TestBed.inject(PlantMetadataService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });
