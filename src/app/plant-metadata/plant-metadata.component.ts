@@ -41,8 +41,9 @@ export class UploadFileComponent{
   onFileSelect(event) {
     this.selectedFile = event.target.files[0];
   }
-setUpload(){
- 
+
+  setUpload(){
+    console.log('setUpload');
   }
 }
 /******/
