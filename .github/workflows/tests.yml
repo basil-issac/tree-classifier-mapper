@@ -26,4 +26,4 @@ jobs:
       uses: mayur-rawte/github-angular-actions@latest
     
     - name: Angular Full CI
-      uses: mayur-rawte/github-angular-actions@latest
+      uses: colbyhill21/angular-full-ci@v1.0
