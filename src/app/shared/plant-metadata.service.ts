@@ -16,7 +16,8 @@ export class PlantMetadataService {
     latitude: new FormControl(''),
     longitude: new FormControl(''),
     imagePath: new FormControl(''),
-    seeded: new FormControl(false)
+    seeded: new FormControl(false),
+    tags: new FormControl('')
   })
 
   createTreeMetadataEntry(metadata) {
