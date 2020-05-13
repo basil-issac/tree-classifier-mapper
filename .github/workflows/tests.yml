@@ -24,3 +24,6 @@ jobs:
       
     - name: Angular Github Actions
       uses: mayur-rawte/github-angular-actions@latest
+    
+    - name: Angular Full CI
+      uses: mayur-rawte/github-angular-actions@latest
