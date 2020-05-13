@@ -27,3 +27,6 @@ jobs:
     
     - name: Angular Full CI
       uses: colbyhill21/angular-full-ci@v1.0
+      with:
+        # Command to run tests on your project, do not prepend with "npm", it is already included.
+        testcommand: run test
