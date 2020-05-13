@@ -25,8 +25,11 @@ jobs:
     - name: Angular Github Actions
       uses: mayur-rawte/github-angular-actions@latest
     
-    - run: npm install
+    - name: Install npm
+      run: npm install
     
-     # Runs a single command using the runners shell
+    - name: Install dependencies
+      run: npm ci
+    
     - name: Runs ng test script
       run: ng test --no-watch --code-coverage
