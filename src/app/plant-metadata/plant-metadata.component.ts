@@ -47,14 +47,6 @@ export class PlantMetadataComponent implements OnInit {
       });
   }
 
-  changePlantType(event) {
-    this.plantType = event.target.value
-  }
-
-  onFileSelected(event){
-    console.log(event);
-  }
-
   setUpload(){
     console.log('setUpload');
   }
