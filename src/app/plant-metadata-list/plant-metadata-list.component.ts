@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantMetadataService } from "../shared/plant-metadata.service";
+import { PlantMetadataService } from "../services/plant-metadata.service";
 
 @Component({
   selector: 'app-plant-metadata-list',
@@ -8,7 +8,7 @@ import { PlantMetadataService } from "../shared/plant-metadata.service";
 })
 export class PlantMetadataListComponent implements OnInit {
 
-  constructor(private plantMetadataService:PlantMetadataService) { }
+  constructor(private plantMetadataService: PlantMetadataService) { }
 
   plantMetadataList;
 
