@@ -1,14 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapComponent } from './map.component';
+import {PlantMetadataService} from "../services/plant-metadata.service";
 
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
 
+  const PlantMetadataServiceStub = {
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapComponent ]
+      declarations: [ MapComponent ],
+      providers: [{ provide: PlantMetadataService, useClass: PlantMetadataServiceStub }]
     })
     .compileComponents();
   }));
