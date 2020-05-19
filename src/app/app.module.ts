@@ -13,7 +13,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 
 import { PlantMetadataComponent } from './plant-metadata/plant-metadata.component';
 import { PlantMetadataListComponent } from './plant-metadata-list/plant-metadata-list.component';
-import { PlantMetadataService } from "./shared/plant-metadata.service";
+import { PlantMetadataService } from "./services/plant-metadata.service";
 
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
@@ -21,8 +21,6 @@ import { environment } from '../environments/environment';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
-
-
 
 @NgModule({
   declarations: [
@@ -49,4 +47,5 @@ import {MatInputModule} from "@angular/material/input";
   providers: [PlantMetadataService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

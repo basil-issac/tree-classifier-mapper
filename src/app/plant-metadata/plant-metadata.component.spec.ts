@@ -1,14 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlantMetadataComponent } from './plant-metadata.component';
+import {ImageUploadService} from "../services/image-upload.service";
+import {PlantMetadataService} from "../services/plant-metadata.service";
 
 describe('PlantMetadataComponent', () => {
   let component: PlantMetadataComponent;
   let fixture: ComponentFixture<PlantMetadataComponent>;
 
+  const PlantMetadataServiceStub = {
+  };
+
+  const ImageUploadServiceStub = {
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlantMetadataComponent ]
+      declarations: [ PlantMetadataComponent ],
+      providers: [{ provide: PlantMetadataService, useClass: PlantMetadataServiceStub },
+                  { provide: ImageUploadService, useClass: ImageUploadServiceStub }]
     })
     .compileComponents();
   }));

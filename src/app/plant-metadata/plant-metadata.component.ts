@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantMetadataService } from "../shared/plant-metadata.service";
-import {AngularFireStorage} from "@angular/fire/storage";
+import { PlantMetadataService } from "../services/plant-metadata.service";
 import * as uuid from 'uuid';
+import {ImageUploadService} from "../services/image-upload.service";
 
 @Component({
   selector: 'app-plant-metadata',
@@ -10,7 +10,7 @@ import * as uuid from 'uuid';
 })
 export class PlantMetadataComponent implements OnInit {
 
-  constructor(public plantMetadataService: PlantMetadataService, private angularFireStorage: AngularFireStorage) {}
+  constructor(public plantMetadataService: PlantMetadataService, private imageUploadService: ImageUploadService) {}
 
   ngOnInit(): void {
   }
@@ -36,7 +36,7 @@ export class PlantMetadataComponent implements OnInit {
       // Set the image path in the database
       data.imagePath = imagePath;
       // Upload the image to firestore
-      this.angularFireStorage.upload(imagePath, this.selectedFile);
+      this.imageUploadService.uploadImage(imagePath, this.selectedFile);
     }
 
     // Upload the metadata with the image path to the database
