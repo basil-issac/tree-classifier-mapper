@@ -1,10 +1,13 @@
 mat-toolbar-row{
-    padding-top: 65px;
-    padding-bottom: 65px;
+    padding-top: 95px;
+    padding-bottom: 95px;
+    background-image: url(img/leaf-background.jpg);
+    background-size: 1600px;
+    background-repeat: no-repeat;
     
 }
 span {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 50px; 
     font-family: "Helvetica";
     text-align: center;
