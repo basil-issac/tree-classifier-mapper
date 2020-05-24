@@ -1,7 +1,7 @@
-import {environment} from '../../environments/environment';
-import {Component, OnInit} from '@angular/core';
+import { environment } from '../../environments/environment';
+import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import {PlantMetadataService} from "../services/plant-metadata.service";
+import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.service";
 
 @Component({
   selector: 'app-map',
@@ -60,6 +60,12 @@ export class MapComponent implements OnInit {
               },
               'properties': {
                 'title': dataEntry.plantType,
+                'imagePath': dataEntry.imagePath,
+                'plantType': dataEntry.plantType,
+                'seeded': dataEntry.seeded,
+                'tags' : dataEntry.tags,
+                'uploadId' : dataEntry.uploadId,
+                'uploaderName' : dataEntry.uploaderName,
                 'icon': 'park'
               }
             });
@@ -95,16 +101,40 @@ export class MapComponent implements OnInit {
         'type': 'symbol',
         'source': 'points',
         'layout': {
-          // get the icon name from the source's "icon" property
-          // concatenate the name to get an icon from the style's sprite sheet
-          'icon-image': ['concat', ['get', 'icon'], '-15'],
-          // get the title name from the source's "title" property
-          'text-field': ['get', 'title'],
-          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-          'text-offset': [0, 0.6],
-          'text-anchor': 'top'
+          'icon-image': '{icon}-15',
+          'icon-allow-overlap': true
         }
       });
+
+      // Create a popup, but don't add it to the map yet.
+      var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+      });
+
+      this.map.on('click', 'points', function (e) {
+        // Change the cursor style as a UI indicator.
+        //this.map.getCanvas().style.cursor = 'pointer';
+
+        if (e.features[0].geometry.type === 'Point') {
+
+          var coordinates =  e.features[0].geometry.coordinates.slice();
+          var properties = e.features[0].properties;
+
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+
+          console.log(properties.uploaderName);
+
+        }
+      }
+
+      );
+  
     });
   }
 

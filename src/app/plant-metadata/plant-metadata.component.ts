@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantMetadataService } from "../services/plant-metadata.service";
+import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.service";
 import * as uuid from 'uuid';
-import {ImageUploadService} from "../services/image-upload.service";
+import {ImageUploadService} from "../services/image/image-upload.service";
 
 @Component({
   selector: 'app-plant-metadata',
@@ -46,5 +46,6 @@ export class PlantMetadataComponent implements OnInit {
         maybe clear the form or give a success message */
       });
   }
+
 }
 
