@@ -106,12 +106,6 @@ export class MapComponent implements OnInit {
         }
       });
 
-      // Create a popup, but don't add it to the map yet.
-      var popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
-      });
-
       this.map.on('click', 'points', function (e) {
         // Change the cursor style as a UI indicator.
         //this.map.getCanvas().style.cursor = 'pointer';
