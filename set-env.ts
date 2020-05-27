@@ -22,10 +22,8 @@ const envConfigFile =
 `;
 console.log('The file `environment.ts` will be written with the following content: \n');
 console.log(envConfigFile);
-writeFile(targetPath, envConfigFile, function (err) {
-   if (err) {
-       throw console.error(err);
-   } else {
-       console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`);
-   }
+writeFile(targetPath, envConfigFile, 'utf8', (err) => {
+  if (err) {
+    return console.log(err);
+  }
 });
