@@ -9,17 +9,21 @@ import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.
 export class PlantMetadataListComponent implements OnInit {
 
   constructor(private plantMetadataService: PlantMetadataService) { }
-
+  showData = false;
   plantMetadataList;
 
-  ngOnInit(): void {
-    this.getPlantMetadataList();
-  }
+  ngOnInit(): void { }
 
   getPlantMetadataList = () => {
     this.plantMetadataService
       .getTreeMetadata()
       .subscribe(res => (this.plantMetadataList = res));
-  }
+  };
 
+  changeShowData() {
+    this.showData = this.showData === false;
+    if (this.showData === true) {
+      this.getPlantMetadataList();
+    }
+  }
 }
