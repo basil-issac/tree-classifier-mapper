@@ -1,3 +1,6 @@
+<button type="button" (click)="changeShowData()">Show DB List</button>
+
+<div *ngIf="showData === true">
 <p> Here is the data from the database!</p>
 <tbody>
   <tr *ngFor="let metadata of plantMetadataList">
@@ -8,3 +11,4 @@
     <td>{{ metadata.payload.doc.data().tags }}</td>
   </tr>
 </tbody>
+</div>
