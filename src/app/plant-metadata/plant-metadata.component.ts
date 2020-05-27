@@ -42,8 +42,7 @@ export class PlantMetadataComponent implements OnInit {
     // Upload the metadata with the image path to the database
     this.plantMetadataService.createTreeMetadataEntry(data)
       .then(res => {
-        /* do something here....
-        maybe clear the form or give a success message */
+        this.plantMetadataService.form.reset();
       });
   }
 

@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
+import {ImageUploadService} from "./services/image/image-upload.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import {MatInputModule} from "@angular/material/input";
     MatToolbarModule,
     ReactiveFormsModule,
    ],
-  providers: [PlantMetadataService],
+  providers: [PlantMetadataService,
+    ImageUploadService
+  ],
   bootstrap: [AppComponent]
 })
 
