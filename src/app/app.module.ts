@@ -35,7 +35,6 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
     PlantMetadataComponent,
     PlantMetadataListComponent,
     AboutComponent,
-    /*added*/
     routingComponents,
   ],
   imports: [
