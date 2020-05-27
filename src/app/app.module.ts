@@ -13,7 +13,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 
 import { PlantMetadataComponent } from './plant-metadata/plant-metadata.component';
 import { PlantMetadataListComponent } from './plant-metadata-list/plant-metadata-list.component';
-import { PlantMetadataService } from "./services/plant-metadata.service";
+import { PlantMetadataService } from "./services/plant-metadata/plant-metadata.service";
 
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 

@@ -33,6 +33,20 @@
 
   <input
     matInput
+    placeholder="Condition"
+    formControlName="condition"
+    type="text"
+  >
+
+  <input
+    matInput
+    placeholder="Date Added"
+    formControlName="dateAdded"
+    type="date"
+  >
+
+  <input
+    matInput
     placeholder="Tags (Separated by comma)"
     formControlName="tags"
     type="text"
@@ -47,9 +61,10 @@
   <button
     mat-stroked-button
     style="margin: 10px;"
-    (click)="onSubmit()"
+    type="submit"
   >
     Submit
   </button>
+
 </form>
 

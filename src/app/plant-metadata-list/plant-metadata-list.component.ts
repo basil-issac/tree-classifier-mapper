@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantMetadataService } from "../services/plant-metadata.service";
+import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.service";
 
 @Component({
   selector: 'app-plant-metadata-list',

@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlantMetadataComponent } from './plant-metadata.component';
-import {ImageUploadService} from "../services/image-upload.service";
-import {PlantMetadataService} from "../services/plant-metadata.service";
+import {ImageUploadService} from "../services/image/image-upload.service";
+import {PlantMetadataService} from "../services/plant-metadata/plant-metadata.service";
 
 describe('PlantMetadataComponent', () => {
   let component: PlantMetadataComponent;

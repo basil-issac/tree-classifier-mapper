@@ -2,9 +2,11 @@
   "name": "tree-classifier-mapper",
   "version": "0.0.0",
   "scripts": {
+    "config": 
+     "ts-node -O '{\"module\": \"commonjs\"}' ./set-env.ts",
+    "build": "npm run config && ng build --prod",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
