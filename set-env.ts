@@ -1,9 +1,6 @@
-import { writeFile } from 'fs';
-// Configure Angular `environment.ts` file path
-const targetPath = './src/environments/environment.ts';
-// Load node modules
-const colors = require('colors');
-require('dotenv').load();
+import {writeFile} from 'fs';
+
+const targetPath = './src/environments/environment.prod.ts';
 // `environment.ts` file structure
 const envConfigFile = 
 `export const environment = {
@@ -23,12 +20,12 @@ const envConfigFile =
     }
   };
 `;
-console.log(colors.magenta('The file `environment.ts` will be written with the following content: \n'));
-console.log(colors.grey(envConfigFile));
+console.log('The file `environment.ts` will be written with the following content: \n');
+console.log(envConfigFile);
 writeFile(targetPath, envConfigFile, function (err) {
    if (err) {
        throw console.error(err);
    } else {
-       console.log(colors.magenta(`Angular environment.ts file generated correctly at ${targetPath} \n`));
+       console.log(`Angular environment.ts file generated correctly at ${targetPath} \n`);
    }
 });
