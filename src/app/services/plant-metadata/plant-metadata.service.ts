@@ -35,4 +35,17 @@ export class PlantMetadataService {
   getTreeMetadata() {
     return this.firestore.collection("treeMetadata").snapshotChanges();
   }
+
+  getTreeMetadataFromRoot(pathRoot) {
+    return this.firestore.collection(pathRoot).snapshotChanges();
+  }
+
+  createTreeMetadataEntryWithRoot(metadata, pathRoot) {
+    return new Promise<any>((resolve, reject) => {
+      this.firestore
+        .collection(pathRoot)
+        .add(metadata)
+        .then(res => {}, err => reject(err));
+    });
+  }
 }

@@ -2,8 +2,7 @@
   "name": "tree-classifier-mapper",
   "version": "0.0.0",
   "scripts": {
-    "config": 
-     "ts-node -O '{\"module\": \"commonjs\"}' ./set-env.ts",
+    "config": "ts-node -O '{\"module\": \"commonjs\"}' ./set-env.ts",
     "build": "npm run config && ng build --prod",
     "ng": "ng",
     "start": "ng serve",
@@ -25,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~9.1.1",
     "@angular/router": "~9.1.1",
     "@types/mapbox-gl": "^1.9.1",
+    "axios": "^0.19.2",
     "firebase": "^7.14.2",
     "mapbox-gl": "^1.10.0",
     "rxjs": "~6.5.4",

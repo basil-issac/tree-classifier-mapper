@@ -21,8 +21,12 @@ import { environment } from '../environments/environment';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
+
+import {ImageUploadService} from "./services/image/image-upload.service";
+
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +54,9 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
     ReactiveFormsModule,
     AppRoutingModule,
    ],
-  providers: [PlantMetadataService],
+  providers: [PlantMetadataService,
+    ImageUploadService
+  ],
   bootstrap: [AppComponent]
 })
 
