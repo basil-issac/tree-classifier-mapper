@@ -2,25 +2,40 @@
   <div class="mdc-top-app-bar__row">
     
     <mat-toolbar
-
     >
     
       <mat-toolbar-row>
         <button
           mat-stroked-button
-          style="margin: 50px;"
+          style="margin: 10px;
+          background-color: #4CAF50;
+          border:2px solid;
+          color:white;
+          border-radius: 10px;
+          padding:0px 20px;
+          font-size: 14px;"
           (click)="toggleMenu()"
         >
           Open Side Bar!
         </button>
+
+        
+        <nav>
+          <a routerLink="/about" routerLinkActive="active">About Us!</a>
+        </nav>
+
+        
         <img src="assets/images/logo2.001.png" class="center">
         
         
+
       </mat-toolbar-row>
     
     </mat-toolbar>
+
   </div>
 </header>
+
 
 <div>
   <mat-drawer-container
@@ -43,3 +58,5 @@
     </mat-drawer-content>
   </mat-drawer-container>
 </div>
+
+<router-outlet></router-outlet>
