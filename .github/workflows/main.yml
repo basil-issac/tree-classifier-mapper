@@ -9,38 +9,6 @@ on:
  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  
-  build:
-    name: Build
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Setup node
-        uses: actions/setup-node@master
-        with:
-          node-version: '10.x'
-      # Install the dependencies need to build the app
-      - name: Install Dependencies
-        run: npm install
-      # Runs a set of commands to build
-      - name: Build
-        run: npm run build --prod
-        env:
-          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-          FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
-          MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
-      # sotre the artifact
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
      
   deploy:
     name: Deploy to firebase
@@ -52,7 +20,13 @@ jobs:
         with:
           node-version: '10.x'
       - run: npm install
-      - run: npm run build --prod
+      - run: npm run build
+        env:
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
+          MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
       # ddeploy the angular app to firebase
       - name: Deploy angular app to Firebase
         uses: w9jds/firebase-action@master
