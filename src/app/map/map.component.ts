@@ -2,6 +2,7 @@ import { environment } from '../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.service";
+import {GeoJSONSource} from "mapbox-gl";
 
 @Component({
   selector: 'app-map',
@@ -13,31 +14,21 @@ export class MapComponent implements OnInit {
   map: mapboxgl.Map;
   popUp: mapboxgl.Popup;
   style = 'mapbox://styles/mapbox/streets-v11';
-  featuresFromPlantDb: any = [];
+  featuresFromTestPlantDb: any = [];
+  featuresFromDePaulPlantDb: any = [];
+
 
   constructor(private plantMetadataService: PlantMetadataService) { }
 
   ngOnInit(): void {
-    this.getPlantMetadataFromDb();
     this.initializeMap();
   }
 
   private initializeMap() {
-    /// locate the user and center map there
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(position => {
-    //     this.lat = position.coords.latitude;
-    //     this.lng = position.coords.longitude;
-    //     this.map.flyTo({
-    //       center: [this.lng, this.lat]
-    //     })
-    //   });
-    // }
-
     this.buildMap()
   }
 
-  getPlantMetadataFromDb() {
+  getTestPlantMetadataFromDb() {
     let plantMetadataList;
 
     this.plantMetadataService
@@ -53,7 +44,49 @@ export class MapComponent implements OnInit {
           if (this.isRealCoordinate(dataEntry.latitude, dataEntry.longitude)) {
 
             // create a mapbox feature
-            this.featuresFromPlantDb.push({
+            this.featuresFromTestPlantDb.push({
+              'type': 'Feature',
+              'geometry': {
+                'type': 'Point',
+                'coordinates': [dataEntry.longitude, dataEntry.latitude]
+              },
+              'properties': {
+                'title': dataEntry.plantType,
+                'imagePath': dataEntry.imagePath,
+                'plantType': dataEntry.plantType,
+                'seeded': dataEntry.seeded,
+                'tags': dataEntry.tags,
+                'uploadId': dataEntry.uploadId,
+                'uploaderName': dataEntry.uploaderName,
+                'condition': dataEntry.condition,
+                'dateAdded': dataEntry.dateAdded,
+                'longitude': dataEntry.longitude,
+                'latitude': dataEntry.latitude,
+                'icon': 'park'
+              }
+            });
+          }
+        })
+      });
+  }
+
+  getDePaulPlantMetadataFromDb() {
+    let plantMetadataList;
+
+    this.plantMetadataService
+      .getTreeMetadataFromRoot('dePaulTrees')
+      .subscribe(res => {
+        plantMetadataList = res;
+
+        // for each database entry
+        plantMetadataList.forEach(metadata => {
+          let dataEntry = metadata.payload.doc.data();
+
+          // only put valid gps points on the map
+          if (this.isRealCoordinate(dataEntry.latitude, dataEntry.longitude)) {
+
+            // create a mapbox feature
+            this.featuresFromDePaulPlantDb.push({
               'type': 'Feature',
               'geometry': {
                 'type': 'Point',
@@ -83,13 +116,10 @@ export class MapComponent implements OnInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 5,
-      center: [-87.623, 41.881], /* Chicago */
+      zoom: 12,
+      center: [-87.651, 41.923], /* Chicago, DePaul */
       accessToken: environment.mapbox.accessToken
     });
-
-    // Add map controls
-    this.map.addControl(new mapboxgl.NavigationControl());
 
     this.map.on('load', this.onLoad.bind(this));
 
@@ -101,7 +131,25 @@ export class MapComponent implements OnInit {
       'type': 'geojson',
       'data': {
         'type': 'FeatureCollection',
-        'features': this.featuresFromPlantDb
+        'features': this.featuresFromTestPlantDb
+      }
+    });
+
+    this.map.addSource('dePaulPoints', {
+      'type': 'geojson',
+      'data': {
+        'type': 'FeatureCollection',
+        'features': this.featuresFromDePaulPlantDb
+      }
+    });
+
+    this.map.addLayer({
+      'id': 'dePaulPoints',
+      'type': 'symbol',
+      'source': 'dePaulPoints',
+      'layout': {
+        'icon-image': '{icon}-15',
+        'icon-allow-overlap': true
       }
     });
 
@@ -116,7 +164,10 @@ export class MapComponent implements OnInit {
     });
 
     this.map.on('mouseenter', 'points', (e) => this.onMouseEnter(e));
-    this.map.on('mouseleave', 'points', () => this.onMouseLeave())
+    this.map.on('mouseleave', 'points', () => this.onMouseLeave());
+
+    this.map.on('mouseenter', 'dePaulPoints', (e) => this.onMouseEnter(e));
+    this.map.on('mouseleave', 'dePaulPoints', () => this.onMouseLeave());
   }
 
   onMouseEnter(e) {
@@ -143,12 +194,30 @@ export class MapComponent implements OnInit {
       </ul>
         `)
         .addTo(this.map);
-    } 
+    }
   }
 
   onMouseLeave() {
     this.map.getCanvas().style.cursor = '';
     this.popUp.remove();
+  }
+
+  toggleTestData() {
+    this.getTestPlantMetadataFromDb();
+    (this.map.getSource('points') as GeoJSONSource).setData({
+      'type': 'FeatureCollection',
+      'features': this.featuresFromTestPlantDb
+    });
+    this.map.triggerRepaint();
+  }
+
+  toggleDePaulData() {
+    this.getDePaulPlantMetadataFromDb();
+    (this.map.getSource('dePaulPoints') as GeoJSONSource).setData({
+      'type': 'FeatureCollection',
+      'features': this.featuresFromDePaulPlantDb
+    });
+    this.map.triggerRepaint();
   }
 
   // Checks whether or not a coordinate is valid.  Only valid
