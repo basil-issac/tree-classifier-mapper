@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,11 @@ export class AppComponent {
 
   toggleMenu = () => {
     this.menuOpen = !this.menuOpen;
+  }
+  
+  constructor(private router: Router){}
+
+  goToPage(pageName:string):void{
+    this.router.navigate(['${pageName}']);
   }
 }

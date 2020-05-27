@@ -21,13 +21,16 @@ import { environment } from '../environments/environment';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
+import { AboutComponent } from './about/about.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     PlantMetadataComponent,
-    PlantMetadataListComponent
+    PlantMetadataListComponent,
+    AboutComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -43,6 +46,7 @@ import {MatInputModule} from "@angular/material/input";
     MatSidenavModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    AppRoutingModule,
    ],
   providers: [PlantMetadataService],
   bootstrap: [AppComponent]
