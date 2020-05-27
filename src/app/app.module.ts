@@ -25,6 +25,7 @@ import {MatInputModule} from "@angular/material/input";
 import {ImageUploadService} from "./services/image/image-upload.service";
 
 import { AboutComponent } from './about/about.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 
 @NgModule({
