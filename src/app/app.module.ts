@@ -22,7 +22,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import { AboutComponent } from './about/about.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,9 @@ import { AppRoutingModule } from './app-routing.module';
     MapComponent,
     PlantMetadataComponent,
     PlantMetadataListComponent,
-    AboutComponent
+    AboutComponent,
+    /*added*/
+    routingComponents,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

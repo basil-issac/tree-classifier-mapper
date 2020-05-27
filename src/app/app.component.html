@@ -1,7 +1,6 @@
 <header class="mdc-top-app-bar">
   <div class="mdc-top-app-bar__row">
     <mat-toolbar
-
     >
       <mat-toolbar-row>
         <button
@@ -18,25 +17,18 @@
           Open Side Bar!
         </button>
         
-         <button 
-         about-button
-         style="margin: 10px;
-          background-color: #4CAF50;
-          border:2px solid;
-          color:white;
-          border-radius: 10px;
-          padding:10px 20px;
-          font-size: 14px;
-          cursor: pointer;"
-         (click)="goToPage('About')">About Us
-        </button>
+        <nav>
+          <a routerLink="/about" routerLinkActive="active">About Us!</a>
+        </nav>
 
         <span>Oak Tree Mapper!</span>
       </mat-toolbar-row>
     
     </mat-toolbar>
+
   </div>
 </header>
+
 
 <div>
   <mat-drawer-container
@@ -59,3 +51,5 @@
     </mat-drawer-content>
   </mat-drawer-container>
 </div>
+
+<router-outlet></router-outlet>

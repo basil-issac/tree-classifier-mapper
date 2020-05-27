@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 /*Added */
 import { Routes, RouterModule } from '@angular/router';
 import {AboutComponent} from '../app/about/about.component';
 
+
 const routes: Routes = [
-  {path: 'About', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+
 ];
 
 
@@ -16,3 +18,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [AboutComponent]

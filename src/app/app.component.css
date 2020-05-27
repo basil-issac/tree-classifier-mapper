@@ -15,3 +15,35 @@ span {
     padding-left: 460px;
     
 }
+nav a {
+    padding: 10px 18px;
+    text-decoration: none;
+    margin-top: 5px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 10px;
+    font-family: "Helvetica";
+    font-size: 14px;
+    border:2px solid;
+    margin: 10px;
+
+  }
+
+  nav a:visited, a:link {
+
+    color: #4CAF50;
+
+  }
+
+  nav a:hover {
+
+    color: #4CAF50;
+    background-color: rgb(219, 245, 236);
+
+  }
+
+  nav a.active {
+    color: rgb(33, 107, 35);
+
+  }
+
