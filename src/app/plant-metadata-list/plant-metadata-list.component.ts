@@ -20,8 +20,8 @@ export class PlantMetadataListComponent implements OnInit {
       .subscribe(res => (this.plantMetadataList = res));
   };
 
-  changeShowData() {
-    this.showData = this.showData === false;
+  toggleShowData() {
+    this.showData = !this.showData;
     if (this.showData === true) {
       this.getPlantMetadataList();
     }
