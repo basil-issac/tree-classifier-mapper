@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {PlantMetadataService} from "./plant-metadata.service";
+import {PlantMetadataService} from "../plant-metadata/plant-metadata.service";
 
 import dePaulJson from "../../../assets/dePaulRawTreeDataNewGPS.json";
 
