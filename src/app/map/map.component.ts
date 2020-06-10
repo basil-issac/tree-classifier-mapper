@@ -2,7 +2,7 @@ import { environment } from '../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.service";
-import {GeoJSONSource} from "mapbox-gl";
+import { GeoJSONSource } from "mapbox-gl";
 
 @Component({
   selector: 'app-map',
@@ -16,8 +16,8 @@ export class MapComponent implements OnInit {
   style = 'mapbox://styles/mapbox/streets-v11';
   featuresFromTestPlantDb: any = [];
   featuresFromDePaulPlantDb: any = [];
-
-
+  filterTypes: Array<String> = [];
+  
   constructor(private plantMetadataService: PlantMetadataService) { }
 
   ngOnInit(): void {
@@ -218,6 +218,52 @@ export class MapComponent implements OnInit {
       'features': this.featuresFromDePaulPlantDb
     });
     this.map.triggerRepaint();
+  }
+
+  toggleOakData() {
+    this.filterMap(this.featuresFromTestPlantDb, 'Oak');
+  }
+
+  toggleMapleData() {
+    this.filterMap(this.featuresFromTestPlantDb, 'Maple');
+  }
+
+  toggleAshData() {
+    this.filterMap(this.featuresFromTestPlantDb, 'Ash');
+  }
+
+  toggleFurData() {
+    this.filterMap(this.featuresFromTestPlantDb, 'Fur');
+  }
+
+  toggleCherryData() {
+    this.filterMap(this.featuresFromTestPlantDb, 'Cherry');
+  }
+
+  togglePineData() {
+    this.filterMap(this.featuresFromTestPlantDb, 'Pine');
+  }
+
+  filterMap(data: Array<any>, type: string) {
+    let filteredData = this.filterDataByPlantType(data, type);
+    (this.map.getSource('points') as GeoJSONSource).setData({
+      'type': 'FeatureCollection',
+      'features': filteredData
+    });
+    this.map.triggerRepaint();
+  }
+
+  filterDataByPlantType(data: Array<any>, type: string): Array<any> {
+    const index = this.filterTypes.indexOf(type, 0);
+    if (index > -1) {
+      this.filterTypes.splice(index, 1);
+    } else {
+      this.filterTypes.push(type)
+    }
+
+    return data.filter(
+      plant => !this.filterTypes.includes(plant['properties']['plantType']));
+
   }
 
   // Checks whether or not a coordinate is valid.  Only valid
