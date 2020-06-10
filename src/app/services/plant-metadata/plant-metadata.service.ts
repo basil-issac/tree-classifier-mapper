@@ -36,6 +36,12 @@ export class PlantMetadataService {
     return this.firestore.collection("treeMetadata").snapshotChanges();
   }
 
+  async getPromiseTreeMetadataFromRoot(pathRoot) {
+    const snapshot = await this.firestore.collection(pathRoot).get().toPromise();
+    return snapshot.docs;
+  }
+
+
   getTreeMetadataFromRoot(pathRoot) {
     return this.firestore.collection(pathRoot).snapshotChanges();
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlantMetadataService } from "../services/plant-metadata/plant-metadata.service";
 import * as uuid from 'uuid';
 import {ImageUploadService} from "../services/image/image-upload.service";
+import {ClassifierService} from "../services/classifier/classifier.service";
 
 @Component({
   selector: 'app-plant-metadata',
@@ -10,7 +11,9 @@ import {ImageUploadService} from "../services/image/image-upload.service";
 })
 export class PlantMetadataComponent implements OnInit {
 
-  constructor(public plantMetadataService: PlantMetadataService, private imageUploadService: ImageUploadService) {}
+  constructor(public plantMetadataService: PlantMetadataService,
+              private imageUploadService: ImageUploadService,
+              private classifierService: ClassifierService) {}
 
   ngOnInit(): void {
   }
@@ -19,6 +22,7 @@ export class PlantMetadataComponent implements OnInit {
   firebaseImageFolder = '/plantImages/'; // uploadId, file name
   isFileSelected = false;
   selectedFile = File;
+  knnTest = "waiting";
 
   /* upload file section here */
   onFileSelected(event) {
@@ -29,6 +33,14 @@ export class PlantMetadataComponent implements OnInit {
   onSubmit(): void {
     let data = this.plantMetadataService.form.value;
     data.uploadId = uuid.v4();
+
+    // If the user didn't provide a tree type...guess one based on nearest neighbor
+    if (data.plantType === '') {
+      this.classifierService.classifyEntry(data).then(result => {
+        this.knnTest = result;
+        data.plantType = result;
+      });
+    }
 
     // If the user selected a file, add it to the file store and the database
     if (this.isFileSelected) {
@@ -45,6 +57,5 @@ export class PlantMetadataComponent implements OnInit {
         this.plantMetadataService.form.reset();
       });
   }
-
 }
 
