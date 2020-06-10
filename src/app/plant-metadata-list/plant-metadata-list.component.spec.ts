@@ -2,29 +2,29 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlantMetadataListComponent } from './plant-metadata-list.component';
 import {PlantMetadataService} from "../services/plant-metadata/plant-metadata.service";
+import {of} from "rxjs";
 
 describe('PlantMetadataListComponent', () => {
-  let component: PlantMetadataListComponent;
-  let fixture: ComponentFixture<PlantMetadataListComponent>;
 
   const PlantMetadataServiceStub = {
+    getTreeMetadata() {
+      return of({
+      });
+    }
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PlantMetadataListComponent ],
-      providers: [{ provide: PlantMetadataService, useClass: PlantMetadataServiceStub }]
+      providers: [{ provide: PlantMetadataService, useValue: PlantMetadataServiceStub}]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PlantMetadataListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+  it('should create', async () => {
+    let fixture = TestBed.createComponent(PlantMetadataListComponent);
+    let component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
+    expect(component.showData).toBeFalse();
   });
 });
